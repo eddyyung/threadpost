@@ -11,7 +11,7 @@ export default function Pagination({ page, setPage, totalPages } : { page: numbe
           <button key={pn} onClick={() => setPage(pn)} className={`px-3 py-1 border rounded ${pn === page ? 'bg-blue-600 text-white' : ''}`}>{pn}</button>
         ))}
       </div>
-      <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="px-2 py-1 border rounded disabled:opacity-50">下一頁</button>
+      <button onClick={() => setPage(Math.min(totalPages, page + 1))} disabled={page === totalPages} className="px-2 py-1 border rounded disabled:opacity-50">下一頁</button>    
     </div>
   )
 }
