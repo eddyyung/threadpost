@@ -13,7 +13,7 @@ create table if not exists tags (
   name text unique not null
 );
 
--- articles
+-- articles (existing content)
 create table if not exists articles (
   id uuid primary key default gen_random_uuid(),
   author_id uuid references authors(id) on delete set null,
@@ -31,7 +31,20 @@ create table if not exists article_tags (
   primary key (article_id, tag_id)
 );
 
--- search logs (記錄用)
+-- threads_posts (fetched from Threads)
+create table if not exists threads_posts (
+  id uuid primary key default gen_random_uuid(),
+  source_username text,
+  post_id text,
+  text text,
+  author_name text,
+  created_at timestamptz,
+  url text,
+  raw jsonb,
+  inserted_at timestamptz default now()
+);
+
+-- search logs
 create table if not exists search_logs (
   id uuid primary key default gen_random_uuid(),
   user_id text,

@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f172a;
+  --card: #0b1220;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900;
+}
+
+.dark body {
+  background: #0b1220;
+  color: #e6eef8;
+}
+
+.header {
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+}
